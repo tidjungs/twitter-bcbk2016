@@ -1,0 +1,17 @@
+# twitter-bcbk steaming
+
+## Getting Started
+- run command `npm install` for install packages and dependencies
+- config your api key `config/default.json`
+
+```json
+{
+  "COMSUMER_KEY": "Consumer Key (API Key)",
+  "CONSUMER_SECRET": "Consumer Secret (API Secret)",
+  "ACCESS_TOKEN": "Access Token",
+  "ACCESS_TOKEN_SECRET": "Access Token Secret	"
+}
+```
+
+### Available Commands
+- `npm run dev`
