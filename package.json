@@ -23,6 +23,7 @@
     "css-loader": "0.24.0",
     "detect-port": "1.0.0",
     "eslint": "3.4.0",
+    "eslint-config-airbnb-base": "^7.0.0",
     "eslint-loader": "1.5.0",
     "eslint-plugin-flowtype": "2.11.4",
     "eslint-plugin-import": "1.12.0",
@@ -64,7 +65,8 @@
     "build": "node scripts/build.js",
     "test": "jest --watch --env=jsdom",
     "steaming": "babel-node ./src/server/index",
-    "server": "babel-node ./src/bin/server"
+    "server": "babel-node ./src/server/bin/server",
+    "eslint": "eslint --quiet **/**/*.js **/*.js **.js"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"

@@ -48,6 +48,7 @@ module.exports = {
 
   rules: {
     // http://eslint.org/docs/rules/
+    'no-console': 0,
     'array-callback-return': 'warn',
     'default-case': ['warn', { commentPattern: '^no default$' }],
     'dot-location': ['warn', 'property'],
@@ -192,5 +193,10 @@ module.exports = {
     'flowtype/define-flow-type': 'warn',
     'flowtype/require-valid-file-annotation': 'warn',
     'flowtype/use-flow-type': 'warn'
+  },
+  "globals": {
+    "describe": true,
+    "it": true
   }
+
 };
