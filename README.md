@@ -9,7 +9,7 @@
   "COMSUMER_KEY": "Consumer Key (API Key)",
   "CONSUMER_SECRET": "Consumer Secret (API Secret)",
   "ACCESS_TOKEN": "Access Token",
-  "ACCESS_TOKEN_SECRET": "Access Token Secret	"
+  "ACCESS_TOKEN_SECRET": "Access Token Secret"
 }
 ```
 
