@@ -13,5 +13,11 @@
 }
 ```
 
-### Available Commands
-- `npm run dev`
+### Available Commands for Frontend
+- `npm start`
+- `npm test`
+- `npm run build`
+
+### Available Commands for Backend
+- `npm run server` (run `npm run build` before run server)
+- `npm run steaming`
