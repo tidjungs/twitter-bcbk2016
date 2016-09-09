@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-import twitter from './index';
+import twitter from './twitter';
 
 app.use(express.static('build'));
 
