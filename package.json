@@ -42,6 +42,7 @@
     "html-webpack-plugin": "2.22.0",
     "http-proxy-middleware": "0.17.1",
     "jest": "15.1.1",
+    "jest-css-modules": "^1.0.2",
     "json-loader": "0.5.4",
     "node-sass": "^3.9.3",
     "object-assign": "4.1.0",
@@ -86,7 +87,7 @@
     ],
     "moduleNameMapper": {
       "^[./a-zA-Z0-9$_-]+\\.(jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm)$": "<rootDir>/config/jest/FileStub.js",
-      "^[./a-zA-Z0-9$_-]+\\.css$": "<rootDir>/config/jest/CSSStub.js"
+      "^[./a-zA-Z0-9$_-]+\\.(css|scss|sass|less)$": "<rootDir>/config/jest/CSSStub.js"
     },
     "scriptPreprocessor": "<rootDir>/config/jest/transform.js",
     "setupFiles": [
