@@ -105,11 +105,11 @@ module.exports = {
       // in development "style" loader enables hot editing of CSS.
       {
         test: /\.css$/,
-        loader: 'style!css!postcss'
+        loader: 'style!css!postcss',
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass!postcss'
+        loader: 'style!css?modules=true&localIdentName=[name]__[local]___[hash:base64:5]!sass!postcss'
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
