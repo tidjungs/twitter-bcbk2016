@@ -1,0 +1,15 @@
+.greeting {
+	animation: hello 5s infinite; 
+}
+
+@keyframes hello {
+	0% {
+		color: yellow;
+	}
+	50% {
+		color: red;
+	}
+	100% {
+		color: yellow;
+	}
+}
