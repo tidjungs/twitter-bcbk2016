@@ -19,4 +19,3 @@ export default client.stream('statuses/filter', { track: tagName }, (stream) => 
 
   console.log(`start steaming tag #${tagName}`);
 });
-
