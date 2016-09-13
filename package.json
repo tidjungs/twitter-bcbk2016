@@ -19,6 +19,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "6.11.6",
     "case-sensitive-paths-webpack-plugin": "1.1.3",
+    "chai": "^3.5.0",
     "chalk": "1.1.3",
     "config": "^1.21.0",
     "connect-history-api-fallback": "1.3.0",
@@ -44,6 +45,7 @@
     "jest": "15.1.1",
     "jest-css-modules": "^1.0.2",
     "json-loader": "0.5.4",
+    "mocha": "^3.0.2",
     "node-sass": "^3.9.3",
     "object-assign": "4.1.0",
     "opn": "4.0.2",
@@ -71,32 +73,12 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "jest --watch --env=jsdom",
+    "test": "mocha src/tests/.setup.js src/tests/**/*-test.js",
     "steaming": "babel-node ./src/server/index",
     "server": "babel-node ./src/server/bin/server",
     "eslint": "eslint --quiet **/**/*.js **/*.js **.js"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "jsx",
-      "js",
-      "json"
-    ],
-    "moduleNameMapper": {
-      "^[./a-zA-Z0-9$_-]+\\.(jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm)$": "<rootDir>/config/jest/FileStub.js",
-      "^[./a-zA-Z0-9$_-]+\\.(css|scss|sass|less)$": "<rootDir>/config/jest/CSSStub.js"
-    },
-    "scriptPreprocessor": "<rootDir>/config/jest/transform.js",
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/(build|docs|node_modules)/"
-    ],
-    "testEnvironment": "node",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$"
   }
 }
