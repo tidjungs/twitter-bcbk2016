@@ -10,20 +10,12 @@ describe('test App component', () => {
     shallow(<App />);
   });
 
-  it('should renders welcome message', () => {
+  it('should render welcome message', () => {
     const welcome = <h2>Welcome to React</h2>;
     expect(wrapper.contains(welcome)).to.equal(true);
   });
 
-  it("should render tweet card along state", function() {
-    wrapper.setState({
-      tweets: [
-        {text: 'test1'},
-        {text: 'test2'},
-        {text: 'test3'}
-      ]
-    });
-    expect(wrapper.find('.card').length).to.equal(3);
-    expect(wrapper.find('.card').length).not.equal(0);
+  it("should render tweet", function() {
+    expect(wrapper.find('.tweets').length).to.equal(1);
   });
 });

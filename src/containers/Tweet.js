@@ -4,7 +4,7 @@ class Tweet extends Component {
   render() {
     const {tweets} = this.props;
     return (
-      <div>
+      <div className="tweets">
         {tweets.map((tweet, index) => 
           Card(tweet, index)
         )}
