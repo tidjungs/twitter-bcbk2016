@@ -19,5 +19,5 @@
 - `npm run build`
 
 ### Available Commands for Backend
-- `npm run server` (run `npm run build` before run server)
+- `npm run server`
 - `npm run steaming`

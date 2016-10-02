@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import styles from './App.scss';
-
+import Tweet from './containers/Tweet';
 class App extends Component {
+  state = {
+    tweets: []
+  }
   render() {
     return (
       <div className={styles.App}>
@@ -14,6 +17,7 @@ class App extends Component {
         <p className={styles.intro}>
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Tweet tweets={this.state.tweets} />
       </div>
     );
   }
