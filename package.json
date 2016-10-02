@@ -74,6 +74,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "mocha src/tests/.setup.js src/tests/**/*-test.js",
+    "test-socket": "mocha src/tests/.setup.js src/tests/socketio.js",
     "steaming": "babel-node ./src/server/index",
     "server": "babel-node ./src/server/bin/server",
     "eslint": "eslint --quiet **/**/*.js **/*.js **.js"

@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express();
 
-import twitter from './twitter';
+const  twitter  = require('./twitter');
 
-app.use(express.static('build'));
+twitter();
 
-app.get('/', function (req, res) {
-  res.sendFile('index.html');
-});
 export default app;
