@@ -18,19 +18,19 @@ class App extends Component {
       {
         name: 'tidjungs',
         screen_name: 'handmakers',
-        text: 'hello #test',
+        text: ['hello ', '#test', ' my name is tid ', '#bcbk'],
         time: 'Sep 4'
       },
       {
         name: 'tidjungs',
         screen_name: 'handmakers',
-        text: 'hello',
+        text: ['hello ', '#test', ' my name is tid ', '#bcbk'],
         time: 'Sep 4'
       },
-       {
+      {
         name: 'tidjungs',
         screen_name: 'handmakers',
-        text: 'hello',
+        text: ['hello ', '#test', ' my name is tid ', '#bcbk'],
         time: 'Sep 4'
       }
     ]

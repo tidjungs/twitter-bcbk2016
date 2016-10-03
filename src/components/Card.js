@@ -7,15 +7,13 @@ export const Card = (tweet, key) => (
     	<p className={styles.screen_name}> @{tweet.screen_name}</p>
     	<p className={styles.time}>{tweet.time}</p>
     </div>
-    <p className={styles.message}>{tweet.text}</p>
-    { convertTagColor(tweet.text) }
+    <p className={styles.message}>
+    	{ 
+    		tweet.text.map((word) => {
+    			return word[0] === '#' ? <span style={{color: 'blue'}}>{ word }</span> : word
+    		}) 
+    	}
+    </p>
   </div>
 );
 
-
-const convertTagColor = (text) => {
-	for(let i=0; i<text.length; i++) {
-		console.log(text[i]);
-	}
-	return <h1>Hello</h1>
-}
