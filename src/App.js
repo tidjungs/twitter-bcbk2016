@@ -15,28 +15,30 @@ import img from './bcbk.jpg'
 class App extends Component {
   state = {
     tweets: [
-      {
-        name: 'tidjungs',
-        screen_name: 'handmakers',
-        text: ['hello ', '#test', ' my name is tid ', '#bcbk'],
-        time: 'Sep 4'
-      },
-      {
-        name: 'tidjungs',
-        screen_name: 'handmakers',
-        text: ['hello ', '#test', ' my name is tid ', '#bcbk'],
-        time: 'Sep 4'
-      },
-      {
-        name: 'tidjungs',
-        screen_name: 'handmakers',
-        text: ['hello ', '#test', ' my name is tid ', '#bcbk'],
-        time: 'Sep 4'
-      }
+      // {
+      //   name: 'tidjungs',
+      //   screen_name: 'handmakers',
+      //   text: ['hellohellohellohellohellohellohellohe llohellohellohelloh sssssssss  sssss', '#test', ' my name is tid ', '#bcbk', 'llohellohellohelloh sssssssss  sssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss ', 'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'],
+      //   time: 'Sep 4',
+      //   profile_images: 'http://pbs.twimg.com/profile_images/729383654787440640/gw1BgE0l_normal.jpg'
+      // },
+      // {
+      //   name: 'tidjungs',
+      //   screen_name: 'handmakers',
+      //   text: ['hellohellohellohellohellohellohellohe llohellohellohelloh sssssssss  sssss', '#test', ' my name is tid ', '#bcbk', 'llohellohellohelloh'],
+      //   time: 'Oct 03',
+      //   profile_image: 'http://pbs.twimg.com/profile_images/729383654787440640/gw1BgE0l_normal.jpg'
+      // },
+      // {
+      //   name: 'tidjungs',
+      //   screen_name: 'handmakers',
+      //   text: ['hellohellohellohellohellohellohellohe llohellohellohelloh sssssssss  sssss', '#test', ' my name is tid ', '#bcbk', 'llohellohellohelloh'],
+      //   time: 'Sep 4',
+      //   profile_image: 'http://pbs.twimg.com/profile_images/729383654787440640/gw1BgE0l_normal.jpg'
+      // }
     ]
   }
   render() {
-    console.log('state' + JSON.stringify(this.state.tweets));
     return (
       <div className={styles.App}>
         <img className={styles.image} src={img} />
@@ -45,22 +47,40 @@ class App extends Component {
     );
   }
   componentDidMount() {
-    // var self = this;
-    // var client1 = io.connect(socketURL, options);
-    //   client1.on('connect', function(data){
-    //   client1.on('new tweet', function(data) {
-    //     self.setState({
-    //       tweets: [...self.state.tweets, 
-    //         {
-    //           name: data.user.name,
-    //           screen_name: data.user.screen_name,
-    //           text: data.text,
-    //           time: data.user.created_at
-    //         }
-    //       ]
-    //     })
-    //   });
-    // });
+    var self = this;
+    var client1 = io.connect(socketURL, options);
+      client1.on('connect', function(data){
+      client1.on('new tweet', function(data) {
+        console.log(JSON.stringify(data.user.profile_image_url))
+        self.setState({
+          tweets: [...self.state.tweets, 
+            {
+              name: data.user.name,
+              screen_name: data.user.screen_name,
+              text: self.convertTextToArr(data.text),
+              time: data.created_at.substring(4,10),
+              profile_image: data.user.profile_image_url
+            }
+          ]
+        })
+      });
+    });
+  }
+
+  convertTextToArr(text) {
+    let textArr = []
+    let sentence = ''
+    for(let i=0; i<text.length; i++) {
+      sentence += text[i]
+      if(text[i] === ' ') {
+        textArr.push(sentence)
+        sentence = ''
+      }
+    }
+    if(sentence != '') {
+      textArr.push(sentence)
+    }
+    return textArr
   }
 }
 
