@@ -26,7 +26,7 @@ module.exports = () => {
       throw error;
     });
 
-    console.log(`start steaming tag #${tagName}`);
+    console.log(`start steaming tag ${tagName}`);
   });
 }
 
