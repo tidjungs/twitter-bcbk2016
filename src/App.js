@@ -41,10 +41,7 @@ class App extends Component {
     );
   }
   componentDidMount() {
-    
     var self = this;
-    var isScroll = false;
-
     var client1 = io.connect(socketURL, options);
       client1.on('connect', function(data){
       client1.on('new tweet', function(data) {
@@ -60,18 +57,7 @@ class App extends Component {
             }
           ]
         })
-
-        if(!isScroll) {
-          isScroll = !isScroll;
-          var scroll = setInterval(function(){ 
-            window.scrollBy(0,5);
-            if(window.innerHeight + window.scrollY >= document.body.scrollHeight) {
-              clearInterval(scroll);
-              isScroll = !isScroll;
-            }
-          }, 10);
-        }
-
+        window.scrollBy(0, document.body.scrollHeight);
       });
     });
   }
