@@ -16,7 +16,7 @@ module.exports = () => {
     access_token_secret: config.ACCESS_TOKEN_SECRET
   });
 
-  const tagName = 'แผงลอยสยาม';
+  const tagName = '#แผงลอยสยาม';
 
   client.stream('statuses/filter', { track: tagName }, (stream) => {
     stream.on('data', (event) => {

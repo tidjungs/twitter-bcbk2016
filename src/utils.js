@@ -8,7 +8,7 @@ export const convertTextToArr = (text) => {
       sentence = ''
     }
   }
-  if(sentence != '') {
+  if(sentence !== '') {
     textArr.push(sentence)
   }
   return textArr

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import styles from './App.scss';
 import Tweet from './containers/Tweet';
 import { convertTextToArr } from './utils'
@@ -32,34 +31,44 @@ class App extends Component {
       },
     ]
   }
+
   render() {
     return (
       <div className={styles.App}>
-        <img className={styles.image} src={img} />
+        <img className={styles.image} src={img} role='presentation' />
         <Tweet tweets={this.state.tweets} />
       </div>
     );
   }
+
   componentDidMount() {
     var self = this;
     var client1 = io.connect(socketURL, options);
       client1.on('connect', function(data){
       client1.on('new tweet', function(data) {
         
+        let tweets = [...self.state.tweets, 
+          {
+            name: data.user.name,
+            screen_name: data.user.screen_name,
+            text: convertTextToArr(data.text),
+            time: data.created_at.substring(4,10),
+            profile_image: data.user.profile_image_url
+          }
+        ]
+
+        if(tweets.length > 100) {
+          tweets.shift()
+        }
+
         self.setState({
-          tweets: [...self.state.tweets, 
-            {
-              name: data.user.name,
-              screen_name: data.user.screen_name,
-              text: convertTextToArr(data.text),
-              time: data.created_at.substring(4,10),
-              profile_image: data.user.profile_image_url
-            }
-          ]
+          tweets: tweets
         })
-        window.scrollBy(0, document.body.scrollHeight);
-      });
-    });
+
+        window.scrollBy(0, document.body.scrollHeight)
+
+      })
+    })
   }
 }
 
