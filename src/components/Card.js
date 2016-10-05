@@ -10,9 +10,9 @@ export const Card = (tweet, key) => (
     </div>
     <div className={styles.message}>
     	{ 
-    		tweet.text.map((word, id) => {
-    			return word[0] === '#' ? <span style={{color: '#1da1f2'}} key={id}>{ word }</span> : word
-    		}) 
+    		tweet.text.map((word, id) => 
+    		  word[0] === '#' ? <span style={{color: '#89C4F4'}} key={id}>{ word }</span> : word
+    		) 
     	}
     </div>
    </div>

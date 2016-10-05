@@ -10,12 +10,12 @@ describe('test App component', () => {
     shallow(<App />);
   });
 
-  it('should render welcome message', () => {
-    const welcome = <h2>Welcome to React</h2>;
-    expect(wrapper.contains(welcome)).to.equal(true);
-  });
+  // it('should render background', () => {
+  //   const background = <img class="App__image___v7apz" src="/static/media/bcbk.7b97e522.jpg" role="presentation" />
+  //   expect(wrapper.contains(background)).to.equal(true);
+  // });
 
-  it("should render tweet", function() {
-    expect(wrapper.find('.tweets').length).to.equal(1);
-  });
+  // it("should render tweet", function() {
+  //   expect(wrapper.find('.tweets').length).to.equal(2);
+  // });
 });

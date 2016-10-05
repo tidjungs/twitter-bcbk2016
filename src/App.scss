@@ -13,6 +13,11 @@
 
   	z-index: -1;
 	}
+	.random {
+		margin-top: 300px;
+		margin-left: 200px;
+  	position: fixed;
+	}
 	.tweets {
 		margin-top: 5px;
     float:right;
@@ -52,14 +57,17 @@
     	font-weight: bold;
 		}
 		.screen_name {
-			color: grey;
+			color: #95a5a6;
+			font-weight: lighter;
 		}
 		.time {
-			color: grey;
-			margin-left: 20px;
+			color: #95a5a6;
+			margin-left: 15px;
+			font-weight: lighter;
 		}
 	}
 }
+
 
 
 .greeting {
