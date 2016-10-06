@@ -14,7 +14,7 @@ export const convertTextToArr = (text) => {
   return textArr
 }
 
-// for testing scroll
+//////// for testing scroll //////////
 export const dupicateTweets = () => {
 	let arr = []
 	for(var i=0; i<100; i++) {
@@ -31,3 +31,21 @@ export const dupicateTweets = () => {
 	return arr
 }
 
+export const dupicateGuest = () => {
+	let arr = []
+	for(var i=0; i<100; i++) {
+		let guest =	{ 
+				name: 'bot' + i,
+				screen_name: 'bot name' + i,
+				text: [],
+				time: 'Sep 4',
+				profile_image: 'http://pbs.twimg.com/profile_images/729383654787440640/gw1BgE0l_normal.jpg'
+			}
+		arr.push(guest)
+	}
+	return arr
+}
+
+////////////////////////////////////////
+
+export const random = (data) => data[Math.floor(Math.random() * data.length)]

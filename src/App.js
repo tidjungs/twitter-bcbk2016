@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import styles from './App.scss';
 import Tweet from './containers/Tweet';
-import { convertTextToArr, dupicateTweets } from './utils'
+import { Card } from './components/Card';
+import { ModalContent } from './components/ModalContent';
+import { convertTextToArr, dupicateTweets, dupicateGuest, random } from './utils';
+var Modal = require('boron/WaveModal');
 
 
 import io from 'socket.io-client';
@@ -13,34 +16,74 @@ var options ={
 
 import img from './bcbk.jpg'
 
+var modalStyle = {
+  'height': '300px'
+}
+
+var contentStyle = {
+  'height': '50px',
+  'width': '400px',
+  'padding': '20px'
+}
+
 class App extends Component {
   state = {
-    tweets: dupicateTweets()
+    tweets: dupicateTweets(),
+    guests: dupicateGuest(),
+    luckyOne: {
+        name: '',
+        screen_name: '',
+        text: [],
+        time: '',
+        profile_image: '' 
+      }
   }
 
   render() {
+    console.log(this.state.luckyOne)
     return (
       <div className={styles.App}>
         <img className={styles.image} src={img} role='presentation' />
         <button className={styles.random} onClick={() => this.random()}>Random</button>
+         <div>
+            <Modal ref='modal' modalStyle={modalStyle} contentStyle={contentStyle}>
+              { ModalContent(this.state.luckyOne) }
+            </Modal>
+        </div>
         <Tweet tweets={this.state.tweets} />
       </div>
     );
   }
 
+
   random() {
-    let timesRun = 0;
-    let interval = setInterval(() => {
-      timesRun += 1;
-      if(timesRun === 300){
-        clearInterval(interval);
-        window.scrollBy(0, document.body.scrollHeight)
-      }
-      window.scrollBy(0, -15)
-    }, 10)
+
+
+    var self = this;
+
+    self.setState({
+      luckyOne: random(this.state.guests)
+    })      
+    self.refs.modal.show();
+
+
+    // let timesRun = 0;
+    // let interval = setInterval(() => {
+    //   timesRun += 1;
+    //   if(timesRun === 100){
+    //     clearInterval(interval);
+    //     window.scrollBy(0, document.body.scrollHeight)
+    //     self.setState({
+    //       luckyOne: random(this.state.guests)
+    //     })      
+    //     self.refs.modal.show();
+    //   }
+    //   window.scrollBy(0, -20)
+    // }, 10)
   }
 
   componentDidMount() {
+    console.log(this.state.guests)
     window.scrollBy(0, document.body.scrollHeight)
     // var self = this;
     // var client1 = io.connect(socketURL, options);
