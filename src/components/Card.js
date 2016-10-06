@@ -9,11 +9,12 @@ export const Card = ({tweet}) => (
     	<p className={styles.time}>{tweet.time}</p>
     </div>
     <div className={styles.message}>
-    	{ 
-    		tweet.text.map((word, id) => 
-    		  word[0] === '#' ? <span style={{color: '#89C4F4'}} key={id}>{ word }</span> : word
-    		) 
-    	}
+    	{tweet.text.map((word, id) => 
+    		  word[0] === '#' ?
+          <span style={{color: '#89C4F4'}} key={id}>{ word }</span>
+          :
+          word
+    	)}
     </div>
    </div>
 );

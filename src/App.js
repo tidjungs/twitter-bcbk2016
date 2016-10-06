@@ -3,8 +3,7 @@ import styles from './App.scss';
 import Tweet from './containers/Tweet';
 import { ModalContent } from './components/ModalContent';
 import { convertTextToArr, dupicateTweets, dupicateGuest, random } from './utils';
-var Modal = require('boron/WaveModal');
-
+const Modal = require('boron/WaveModal');
 
 import io from 'socket.io-client';
 var socketURL = 'http://localhost:5000';
@@ -15,11 +14,11 @@ var options ={
 
 import img from './bcbk.jpg'
 
-var modalStyle = {
+const modalStyle = {
   'height': '300px'
 }
 
-var contentStyle = {
+const contentStyle = {
   'height': '50px',
   'width': '400px',
   'padding': '20px'
@@ -82,10 +81,10 @@ class App extends Component {
 
   componentDidMount() {
     window.scrollBy(0, document.body.scrollHeight)
-    var self = this;
-    var client1 = io.connect(socketURL, options);
-      client1.on('connect', function(data){
-      client1.on('new tweet', function(data) {
+    const self = this;
+    const client = io.connect(socketURL, options);
+    client.on('connect', function(data){
+      client.on('new tweet', function(data) {
         
         let tweets = [...self.state.tweets, 
           {

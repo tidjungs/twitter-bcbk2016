@@ -91,26 +91,3 @@
 		}
 	}
 }
-
-
-
-.greeting {
-	animation: hello 5s infinite; 
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes hello {
-	0% {
-		color: yellow;
-	}
-	50% {
-		color: red;
-	}
-	100% {
-		color: yellow;
-	}
-}
