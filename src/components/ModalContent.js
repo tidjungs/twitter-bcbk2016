@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../App.scss'
-export const ModalContent = (tweet) => (
+export const ModalContent = (tweet, key) => (
   <div className={styles.modal}>
   	<img src={tweet.profile_image} role='presentation' />
   	<div className={styles.header}>

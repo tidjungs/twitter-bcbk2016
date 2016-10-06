@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import {expect} from 'chai';
-import Tweet from '../containers/Tweet';
+import Tweet from '../containers/Tweet'
+import { Card } from '../components/Card';
 
 describe('should render Tweet container', () => {
   it('should renders tweet without crashing', () => {
@@ -28,7 +29,6 @@ describe('should render Tweet container', () => {
         }
       ]
     });
-    expect(wrapper.find('.card').length).to.equal(0);
-    // expect(wrapper.find('.card').length).not.equal(0);
+    expect(wrapper.find(Card)).to.have.length(2);
   });
 });

@@ -8,7 +8,7 @@ class Tweet extends Component {
     return (
       <div className={styles.tweets}>
         {tweets.map((tweet, index) => 
-          Card(tweet, index)
+          <Card tweet={ tweet } index={ index } />
         )}
       </div>
     );
