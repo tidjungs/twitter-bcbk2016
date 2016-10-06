@@ -59,10 +59,10 @@ class App extends Component {
 
     var self = this;
 
-    self.setState({
-      luckyOne: random(this.state.guests)
-    })      
-    self.refs.modal.show();
+    // self.setState({
+    //   luckyOne: random(this.state.guests)
+    // })      
+    // self.refs.modal.show();
 
 
     let timesRun = 0;
