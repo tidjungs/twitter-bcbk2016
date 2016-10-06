@@ -27,7 +27,7 @@ var contentStyle = {
 
 class App extends Component {
   state = {
-    tweets: dupicateTweets(),
+    tweets: [],
     guests: dupicateGuest(),
     luckyOne: {
         name: '',
