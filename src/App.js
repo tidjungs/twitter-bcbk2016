@@ -45,7 +45,7 @@ class App extends Component {
       <div className={styles.App}>
         <img className={styles.image} src={img} role='presentation' />
         <img className={styles.logo} src={logo} role='presentation' />
-        <button className={styles.random} onClick={() => this.random()}>Random</button>
+        <button className={styles.random} onClick={() => this.random()}>RANDOM</button>
          <div>
             <Modal ref='modal' contentStyle={contentStyle}>
               { ModalContent(this.state.luckyOne, 0) }
