@@ -5,7 +5,7 @@ export const addGuest = (guestData, newGuest) => guestData.contains(newGuest) ? 
 Array.prototype.contains = function(obj) {
 	let i = this.length
 	while(i--) {
-		if(this[i].name === obj.name && this[i].screen_name == obj.screen_name) 
+		if(this[i].name === obj.name && this[i].screen_name === obj.screen_name) 
 			return true
 	}
 	return false

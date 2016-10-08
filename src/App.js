@@ -4,8 +4,8 @@ import Tweet from './containers/Tweet'
 import { ModalContent } from './components/ModalContent'
 
 import { convertTextToArr,
-         dupicateTweets,
-         dupicateGuest,
+         // dupicateTweets,
+         // dupicateGuest,
          random,
          addGuest } from './utils'
 
@@ -27,10 +27,10 @@ const contentStyle = {
 
 class App extends Component {
   state = {
-    tweets: dupicateTweets(),
-    // tweets: [],
-    guests: dupicateGuest(),
-    // guests: [],
+    // tweets: dupicateTweets(),
+    tweets: [],
+    // guests: dupicateGuest(),
+    guests: [],
     luckyOne: {
         name: '',
         screen_name: '',
@@ -59,77 +59,68 @@ class App extends Component {
 
   random() {
     const self = this
-      window.scrollBy(0, document.body.scrollHeight)
+
+    let timesRun = 0
+
+    let interval = setInterval(() => {
+      
+      if(timesRun++ === 100){
+        
+        clearInterval(interval)
+        window.scrollBy(0, document.body.scrollHeight)
         
         self.setState({
           luckyOne: random(this.state.guests)
         })
 
         self.refs.modal.show()
+      }
 
-
-    // let timesRun = 0
-
-    // let interval = setInterval(() => {
-      
-    //   if(timesRun++ === 100){
-        
-    //     clearInterval(interval)
-    //     window.scrollBy(0, document.body.scrollHeight)
-        
-    //     self.setState({
-    //       luckyOne: random(this.state.guests)
-    //     })
-
-    //     self.refs.modal.show()
-    //   }
-
-    //   window.scrollBy(0, -20)
+      window.scrollBy(0, -20)
     
-    // }, 10)
+    }, 10)
   }
 
   componentDidMount() {
-    window.scrollBy(0, document.body.scrollHeight)
 
     const self = this
     
-    // const client = io.connect(socketURL, options)
+    const client = io.connect(socketURL, options)
 
-    // client.on('connect', function(data){
+    client.on('connect', function(data){
       
-    //   client.on('new tweet', function(data) {
+      client.on('new tweet', function(data) {
         
-    //     let tweets = [...self.state.tweets, 
-    //       {
-    //         name: data.user.name,
-    //         screen_name: data.user.screen_name,
-    //         text: convertTextToArr(data.text),
-    //         time: data.created_at.substring(4,10),
-    //         profile_image: data.user.profile_image_url
-    //       }
-    //     ]
+        let tweets = [...self.state.tweets, 
+          {
+            name: data.user.name,
+            screen_name: data.user.screen_name,
+            text: convertTextToArr(data.text),
+            time: data.created_at.substring(4,10),
+            profile_image: data.user.profile_image_url
+          }
+        ]
 
-    //     // delete first tweet when tweets > 100 //
-    //     if(tweets.length > 100) {
-    //       tweets.shift()
-    //     }
+        // delete first tweet when tweets > 100 //
+        if(tweets.length > 100) {
+          tweets.shift()
+        }
 
-    //     let guest = {
-    //       name: data.user.name,
-    //       screen_name: data.user.screen_name,
-    //       profile_image: data.user.profile_image_url
-    //     }
+        let guest = {
+          name: data.user.name,
+          screen_name: data.user.screen_name,
+          profile_image: data.user.profile_image_url
+        }
 
-    //     self.setState({
-    //       tweets: tweets,
-    //       guests: addGuest(self.state.guests, guest)
-    //     })
+        self.setState({
+          tweets: tweets,
+          guests: addGuest(self.state.guests, guest)
+        })
 
-    //     window.scrollBy(0, document.body.scrollHeight)
+        window.scrollBy(0, document.body.scrollHeight)
 
-    //   })
-    // })
+      })
+    })
   }
 }
 
