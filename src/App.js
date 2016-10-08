@@ -1,18 +1,25 @@
-import React, { Component } from 'react';
-import styles from './App.scss';
-import Tweet from './containers/Tweet';
-import { ModalContent } from './components/ModalContent';
-import { convertTextToArr, dupicateTweets, dupicateGuest, random } from './utils';
-const Modal = require('boron/WaveModal');
+import React, { Component } from 'react'
+import styles from './App.scss'
+import Tweet from './containers/Tweet'
+import { ModalContent } from './components/ModalContent'
 
-import io from 'socket.io-client';
-var socketURL = 'http://localhost:5000';
+import { convertTextToArr,
+         // dupicateTweets,
+         // dupicateGuest,
+         random,
+         addGuest } from './utils'
+
+const Modal = require('boron/WaveModal')
+
+import io from 'socket.io-client'
+var socketURL = 'http://localhost:5000'
 var options ={
   transports: ['polling'],
   'force new connection': true
 };
 
 import img from './bcbk.jpg'
+import logo from './logo2.svg'
 
 const modalStyle = {
   'height': '300px'
@@ -26,8 +33,10 @@ const contentStyle = {
 
 class App extends Component {
   state = {
+    // tweets: dupicateTweets(),
     tweets: [],
-    guests: dupicateGuest(),
+    // guests: dupicateGuest(),
+    guests: [],
     luckyOne: {
         name: '',
         screen_name: '',
@@ -38,9 +47,11 @@ class App extends Component {
   }
 
   render() {
+    console.log('guest: ', this.state.guests.length)
     return (
       <div className={styles.App}>
         <img className={styles.image} src={img} role='presentation' />
+        <img className={styles.logo} src={logo} role='presentation' />
         <button className={styles.random} onClick={() => this.random()}>Random</button>
          <div>
             <Modal ref='modal' modalStyle={modalStyle} contentStyle={contentStyle}>
@@ -54,36 +65,37 @@ class App extends Component {
 
 
   random() {
+    const self = this
 
+    let timesRun = 0
 
-    var self = this;
-
-    // self.setState({
-    //   luckyOne: random(this.state.guests)
-    // })      
-    // self.refs.modal.show();
-
-
-    let timesRun = 0;
     let interval = setInterval(() => {
-      timesRun += 1;
-      if(timesRun === 100){
-        clearInterval(interval);
+      
+      if(timesRun++ === 100){
+        
+        clearInterval(interval)
         window.scrollBy(0, document.body.scrollHeight)
+        
         self.setState({
           luckyOne: random(this.state.guests)
-        })      
-        self.refs.modal.show();
+        })
+
+        self.refs.modal.show()
       }
+
       window.scrollBy(0, -20)
+    
     }, 10)
   }
 
   componentDidMount() {
-    window.scrollBy(0, document.body.scrollHeight)
-    const self = this;
+
+    const self = this
+    
     const client = io.connect(socketURL, options);
+
     client.on('connect', function(data){
+      
       client.on('new tweet', function(data) {
         
         let tweets = [...self.state.tweets, 
@@ -96,12 +108,20 @@ class App extends Component {
           }
         ]
 
+        // delete first tweet when tweets > 100 //
         if(tweets.length > 100) {
           tweets.shift()
         }
 
+        let guest = {
+          name: data.user.name,
+          screen_name: data.user.screen_name,
+          profile_image: data.user.profile_image_url
+        }
+
         self.setState({
-          tweets: tweets
+          tweets: tweets,
+          guests: addGuest(self.state.guests, guest)
         })
 
         window.scrollBy(0, document.body.scrollHeight)
@@ -111,4 +131,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

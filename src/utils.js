@@ -1,5 +1,15 @@
-export const convertTextToArr = (text) => text.split(' ');
+export const convertTextToArr = (text) => text.split(' ')
 
+export const addGuest = (guestData, newGuest) => guestData.contains(newGuest) ? guestData : [...guestData, newGuest]
+
+Array.prototype.contains = function(obj) {
+	let i = this.length
+	while(i--) {
+		if(this[i].name === obj.name && this[i].screen_name == obj.screen_name) 
+			return true
+	}
+	return false
+}
 
 //////// for testing scroll //////////
 export const dupicateTweets = () => {
