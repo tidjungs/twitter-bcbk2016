@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../App.scss'
+import styles from '../css/Card.scss'
 export const Card = ({tweet}) => (
   <div className={styles.card}>
   	<img src={tweet.profile_image} className={styles.profile_image} role='presentation' />

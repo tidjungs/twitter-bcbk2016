@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Card} from '../components/Card';
-import styles from '../App.scss';
+import styles from '../css/App.scss';
 
 class Tweet extends Component {
   render() {

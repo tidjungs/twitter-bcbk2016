@@ -1,0 +1,41 @@
+.card {
+	background-color: #fff;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 2px;
+	width: 500px;
+	margin-bottom: 10px;
+	padding-bottom: 30px;
+	padding-top: 20px;
+	p  {
+		display: inline;
+	}
+
+	.message {
+		width: 380px;
+		margin-left: 80px;
+		margin-top: 4px;
+		font-size: 14px;
+	}
+	.profile_image {
+		float: left;
+		margin-left: 20px;
+		width: 50px;
+	}
+	.header{
+		margin-left: 80px;
+		font-size: 15px;
+		.name {
+			color: black;
+    	font-weight: bold;
+		}
+		.screen_name {
+			color: #95a5a6;
+			font-weight: lighter;
+		}
+		.time {
+			color: #95a5a6;
+			margin-left: 15px;
+			font-weight: lighter;
+		}
+	}
+}
