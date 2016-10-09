@@ -4,8 +4,8 @@ import Tweet from './containers/Tweet'
 import { ModalContent } from './components/ModalContent'
 
 import { convertTextToArr,
-         // dupicateTweets,
-         // dupicateGuest,
+         dupicateTweets,
+         dupicateGuest,
          random,
          addGuest } from './utils'
 
@@ -27,10 +27,10 @@ const contentStyle = {
 
 class App extends Component {
   state = {
-    // tweets: dupicateTweets(),
-    tweets: [],
-    // guests: dupicateGuest(),
-    guests: [],
+    tweets: dupicateTweets(),
+    // tweets: [],
+    guests: dupicateGuest(),
+    // guests: [],
     luckyOne: {
         name: '',
         screen_name: '',

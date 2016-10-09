@@ -1,3 +1,5 @@
+import { data1 } from './const/query'
+
 export const convertTextToArr = (text) => text.split(' ')
 
 export const addGuest = (guestData, newGuest) => guestData.contains(newGuest) ? guestData : [...guestData, newGuest]
@@ -12,15 +14,7 @@ Array.prototype.contains = function(obj) {
 }
 
 //////// for testing scroll //////////
-export const dupicateTweets = () => {
-	return new Array(100).fill({
-		name: 'tidjungs',
-		screen_name: 'handmakers',
-		text: ['hello ' ,'#bcbk'],
-		time: 'Sep 4',
-		profile_image: 'http://pbs.twimg.com/profile_images/729383654787440640/gw1BgE0l_normal.jpg'
-	});
-}
+export const dupicateTweets = () => new Array(100).fill(data1)
 
 export const dupicateGuest = () => {
 	let arr = []
