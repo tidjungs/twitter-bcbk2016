@@ -4,10 +4,11 @@ import Tweet from './containers/Tweet'
 import { ModalContent } from './components/ModalContent'
 
 import { convertTextToArr,
-         dupicateTweets,
-         dupicateGuest,
+         // dupicateTweets,
+         // dupicateGuest,
          random,
-         addGuest } from './utils'
+         addGuest,
+         checkRetweet } from './utils'
 
 const Modal = require('boron/WaveModal')
 
@@ -27,10 +28,10 @@ const contentStyle = {
 
 class App extends Component {
   state = {
-    tweets: dupicateTweets(),
-    // tweets: [],
-    guests: dupicateGuest(),
-    // guests: [],
+    // tweets: dupicateTweets(),
+    tweets: [],
+    // guests: dupicateGuest(),
+    guests: [],
     luckyOne: {
         name: '',
         screen_name: '',
@@ -41,6 +42,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.guests.length)
     return (
       <div className={styles.App}>
         <img className={styles.image} src={img} role='presentation' />
@@ -91,33 +93,37 @@ class App extends Component {
       
       client.on('new tweet', function(data) {
         
-        let tweets = [...self.state.tweets, 
-          {
+        if(!checkRetweet(data.text)) {
+
+          let tweets = [...self.state.tweets, 
+            {
+              name: data.user.name,
+              screen_name: data.user.screen_name,
+              text: convertTextToArr(data.text),
+              time: data.created_at.substring(4,10),
+              profile_image: data.user.profile_image_url
+            }
+          ]
+
+          // delete first tweet when tweets > 100 //
+          if(tweets.length > 100) {
+            tweets.shift()
+          }
+
+          let guest = {
             name: data.user.name,
             screen_name: data.user.screen_name,
-            text: convertTextToArr(data.text),
-            time: data.created_at.substring(4,10),
             profile_image: data.user.profile_image_url
           }
-        ]
 
-        // delete first tweet when tweets > 100 //
-        if(tweets.length > 100) {
-          tweets.shift()
+          self.setState({
+            tweets: tweets,
+            guests: addGuest(self.state.guests, guest)
+          })
+
+          window.scrollBy(0, document.body.scrollHeight)
+
         }
-
-        let guest = {
-          name: data.user.name,
-          screen_name: data.user.screen_name,
-          profile_image: data.user.profile_image_url
-        }
-
-        self.setState({
-          tweets: tweets,
-          guests: addGuest(self.state.guests, guest)
-        })
-
-        window.scrollBy(0, document.body.scrollHeight)
 
       })
     })

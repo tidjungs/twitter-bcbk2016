@@ -1,17 +1,19 @@
 import { data1 } from './const/query'
 
-export const convertTextToArr = (text) => text.split(' ')
-
-export const addGuest = (guestData, newGuest) => guestData.contains(newGuest) ? guestData : [...guestData, newGuest]
-
-Array.prototype.contains = function(obj) {
-	let i = this.length
+const contains = (data, obj) => {
+	let i = data.length
 	while(i--) {
-		if(this[i].name === obj.name && this[i].screen_name === obj.screen_name) 
+		if(data[i].name === obj.name && data[i].screen_name === obj.screen_name) 
 			return true
 	}
 	return false
 }
+
+export const convertTextToArr = (text) => text.split(' ').map((word) => word += ' ')
+
+export const addGuest = (guestData, newGuest) => contains(guestData, newGuest) ? guestData : [...guestData, newGuest]
+
+export const checkRetweet = (text) => text[0] === 'R' && text[1] === 'T'
 
 //////// for testing scroll //////////
 export const dupicateTweets = () => new Array(100).fill(data1)
