@@ -20,7 +20,7 @@ var options ={
 };
 
 import img from './img/bcbk.jpg'
-import logo from './img/logo2.svg'
+import logo from './img/logo_kanun.svg'
 
 const contentStyle = {
   'padding': '20px'
