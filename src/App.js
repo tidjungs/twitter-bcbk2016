@@ -41,24 +41,6 @@ class App extends Component {
       }
   }
 
-  render() {
-    console.log(this.state.guests.length)
-    return (
-      <div className={styles.App}>
-        <img className={styles.image} src={img} role='presentation' />
-        <img className={styles.logo} src={logo} role='presentation' />
-        <button className={styles.random} onClick={() => this.random()}>RANDOM</button>
-         <div>
-            <Modal ref='modal' contentStyle={contentStyle}>
-              { ModalContent(this.state.luckyOne, 0) }
-            </Modal>
-        </div>
-        <Tweet tweets={this.state.tweets} />
-      </div>
-    );
-  }
-
-
   random() {
     const self = this
 
@@ -100,7 +82,7 @@ class App extends Component {
               name: data.user.name,
               screen_name: data.user.screen_name,
               text: convertTextToArr(data.text),
-              time: data.created_at.substring(4,10),
+              time: data.created_at.substring(4,16),
               profile_image: data.user.profile_image_url
             }
           ]
@@ -127,6 +109,23 @@ class App extends Component {
 
       })
     })
+  }
+
+  render() {
+    console.log(this.state.guests.length)
+    return (
+      <div className={styles.App}>
+        <img className={styles.image} src={img} role='presentation' />
+        <img className={styles.logo} src={logo} role='presentation' />
+        <button className={styles.random} onClick={() => this.random()}>RANDOM</button>
+         <div>
+            <Modal ref='modal' contentStyle={contentStyle}>
+              { ModalContent(this.state.luckyOne, 0) }
+            </Modal>
+        </div>
+        <Tweet tweets={this.state.tweets} />
+      </div>
+    )
   }
 }
 
