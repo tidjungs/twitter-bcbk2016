@@ -35,8 +35,6 @@ class App extends Component {
     luckyOne: {
         name: '',
         screen_name: '',
-        text: [],
-        time: '',
         profile_image: '' 
       }
   }
@@ -48,7 +46,7 @@ class App extends Component {
 
     let interval = setInterval(() => {
       
-      if(timesRun++ === 100){
+      if(timesRun++ === 300){
         
         clearInterval(interval)
         window.scrollBy(0, document.body.scrollHeight)
