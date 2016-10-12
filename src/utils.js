@@ -1,17 +1,12 @@
-import { data1 } from './const/query'
+import { data1 } from './const/query';
 
 const contains = (data, obj) => {
-	let i = data.length
-	while(i--) {
-		if(data[i].name === obj.name && data[i].screen_name === obj.screen_name) 
-			return true
-	}
-	return false
+	return [...data.filter((d) => d.screen_name !== obj.screen_name), obj];
 }
 
 export const convertTextToArr = (text) => text.split(' ').map((word) => word += ' ')
 
-export const addGuest = (guestData, newGuest) => contains(guestData, newGuest) ? guestData : [...guestData, newGuest]
+export const addGuest = (guestData, newGuest) => contains(guestData, newGuest)
 
 export const checkRetweet = (text) => text[0] === 'R' && text[1] === 'T'
 
