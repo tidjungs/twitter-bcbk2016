@@ -1,12 +1,8 @@
 import { data1 } from './const/query';
 
-const contains = (data, obj) => {
-	return [...data.filter((d) => d.screen_name !== obj.screen_name), obj];
-}
-
 export const convertTextToArr = (text) => text.split(' ').map((word) => word += ' ')
 
-export const addGuest = (guestData, newGuest) => contains(guestData, newGuest)
+export const addGuest = (guestData, newGuest) => [...guestData.filter((d) => d.screen_name !== newGuest.screen_name), newGuest]
 
 export const checkRetweet = (text) => text[0] === 'R' && text[1] === 'T'
 
