@@ -16,24 +16,24 @@
 	
 	.logo {
 		position: fixed;
-		height: 450px;
+		height: 550px;
 		left: 160px;
-		top: 30px;
+		top: 100px;
 	}
 
 	.random {
-		margin-top: 480px;
-		margin-left: 325px;
+		margin-top: 640px;
+		margin-left: 375px;
   	position: fixed;
-  	height: 30px;
-  	width: 100px;
+  	height: 40px;
+  	width: 120px;
 		border-style: solid;
-    border-width: 3px;
-    border-color: #4ECDC4;
-    border-radius: 2px;
+    border-width: 2px;
+    border-color: #2daebe;
+    border-radius: 6px;
     color: #fff;
     background: none;
-    font-size: 13px;
+    font-size: 16px;
 	}
 	.random:hover {
 		background-color: black;

@@ -11,7 +11,7 @@ export const Card = ({tweet}) => (
     <div className={styles.message}>
     	{tweet.text.map((word, id) => 
     		  word[0] === '#' ?
-          <span style={{color: '#89C4F4'}} key={id}>{ word }</span>
+          <span style={{color: '#29B6F6'}} key={id}>{ word }</span>
           :
           word
     	)}

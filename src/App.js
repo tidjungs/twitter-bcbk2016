@@ -26,6 +26,7 @@ const contentStyle = {
   'padding': '20px'
 }
 
+
 class App extends Component {
   state = {
     // tweets: dupicateTweets(),
@@ -42,7 +43,7 @@ class App extends Component {
   random() {
     const self = this
 
-    let timesRun = 0
+    let timesRun = 0;
 
     let interval = setInterval(() => {
       
@@ -50,7 +51,6 @@ class App extends Component {
         
         clearInterval(interval)
         window.scrollBy(0, document.body.scrollHeight)
-        
         self.setState({
           luckyOne: random(this.state.guests)
         })
@@ -100,7 +100,7 @@ class App extends Component {
             tweets: tweets,
             guests: addGuest(self.state.guests, guest)
           })
-
+          
           window.scrollBy(0, document.body.scrollHeight)
 
         }
@@ -110,7 +110,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.guests.length)
     return (
       <div className={styles.App}>
         <img className={styles.image} src={img} role='presentation' />
