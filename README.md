@@ -20,4 +20,10 @@
 
 ### Available Commands for Backend
 - `npm run server`
-- `npm run steaming`
+
+### Build to Production
+```
+npm run build
+npm run server
+http://localhost:8080
+```
