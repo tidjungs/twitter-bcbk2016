@@ -14,7 +14,7 @@ export const Card = ({tweet}) => (
           <span style={{color: '#29B6F6'}} key={id}>{ word }</span>
           :
           word
-    	)}
+    	)} 
     </div>
    </div>
 );
