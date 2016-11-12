@@ -8,7 +8,8 @@ import { convertTextToArr,
          // dupicateGuest,
          random,
          addGuest,
-         checkRetweet } from './utils'
+         checkRetweet,
+         checkBadWord } from './utils'
 
 const Modal = require('boron/WaveModal')
 
@@ -72,8 +73,10 @@ class App extends Component {
     client.on('connect', function(data){
       
       client.on('new tweet', function(data) {
-        
-        if(!checkRetweet(data.text)) {
+          
+        // console.log("count: " + checkBadWord(data.text));
+          
+        if(!checkRetweet(data.text) && !checkBadWord(data.text)) {
 
           let tweets = [...self.state.tweets, 
             {
@@ -113,7 +116,7 @@ class App extends Component {
     return (
       <div className={styles.App}>
         <img className={styles.image} src={img} role='presentation' />
-        <img className={styles.logo} src={logo} role='presentation' />
+         <img className={styles.logo} src={logo} role='presentation' /> 
         <button className={styles.random} onClick={() => this.random()}>RANDOM</button>
          <div>
             <Modal ref='modal' contentStyle={contentStyle}>
