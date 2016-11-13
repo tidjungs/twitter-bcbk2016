@@ -1,3 +1,3 @@
 export const getBadWords = () => [
-	"อิอิ"
+	'text'
 ]
