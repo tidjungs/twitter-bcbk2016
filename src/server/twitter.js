@@ -16,7 +16,7 @@ module.exports = () => {
     access_token_secret: config.ACCESS_TOKEN_SECRET
   });
 
-  const tagName = '#bcbk7';
+  const tagName = '#ywc14';
 
   client.stream('statuses/filter', { track: tagName }, (stream) => {
     stream.on('data', (event) => {

@@ -21,7 +21,8 @@ var options ={
 };
 
 import img from './img/bcbk.jpg'
-import logo from './img/logo_kanun.svg'
+// import logo from './img/logo_kanun.svg'
+import logo from './img/ywc-logo.png'
 
 const contentStyle = {
   'padding': '20px'

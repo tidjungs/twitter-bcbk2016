@@ -16,9 +16,9 @@
 	
 	.logo {
 		position: fixed;
-		height: 550px;
 		left: 160px;
-		top: 100px;
+		width: 667px;
+		top: 300px;
 	}
 
 	.random {
@@ -52,9 +52,9 @@
 
 @media screen and (max-width: 1200px) {
 	.logo {
-		height: 450px !important;
+		width: 480px !important;
 		left: 50px !important;
-		top: 100px !important;
+		top: 300px !important;
 	}
 	.random {
 		margin-top: 560px !important;
@@ -64,9 +64,9 @@
 }
 @media screen and (max-width: 970px) {
 	.logo {
-		height: 350px !important;
-		left: 20px !important;
-		top: 50px !important;
+		width: 380px !important;
+		left: 50px !important;
+		top: 200px !important;
 	}
 	.random {
 		margin-top: 400px !important;
